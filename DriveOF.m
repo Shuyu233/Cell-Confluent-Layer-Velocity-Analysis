@@ -50,16 +50,16 @@ function DriveOF (MovieName,ROIName,varargin)
 
 %% Driver Parameters 
 
-TotalMovies = 1;             %total number of movies the user wishes to analyze. This value has to be at least 1.
+TotalMovies = 20;             %total number of movies the user wishes to analyze. This value has to be at least 1.
 
 scale = 0.23;              %1 pixel = (blank) microns
 dt = 5;                      %time between frames
 
 %% AIV Parameters
 
-BoxSize = 100;               %should be set large enough that each box contains at least one feature
+BoxSize = 70;               %should be set large enough that each box contains at least one feature
 
-BlurSTD = 8;%30 images, 6.5
+BlurSTD = 6;%30 images, 6.5
 
 ArrowSize = 21;
 
@@ -153,7 +153,12 @@ if isempty(varargin) == true || strcmpi(varargin{1},'none') == true
     [ X,Y,Vx,Vy,mov] = OpticalFlow( MovName,BinaryMask,BoxSize,BlurSTD,ArrowSize,scale,dt,'none' );
      
     save(ResultsName,'X','Y','Vx','Vy','mov')
-    movie2avi(mov,TrackedMovie,'compression','none','fps',5);
+    Videooutput=VideoWriter(TrackedMovie,'unCompressed AVI');
+    Videooutput.FrameRate=5;
+    open(Videooutput);
+    writeVideo(Videooutput,mov);
+    close(Videooutput);
+    %movie2avi(mov,TrackedMovie,'compression','none','fps',5);
     
     elseif strcmp(varargin{1},'Rotation') == true
     
@@ -162,15 +167,30 @@ if isempty(varargin) == true || strcmpi(varargin{1},'none') == true
    [ X,Y,Vx,Vy,mov,Om,OmMov ] = OpticalFlow( MovName,BinaryMask,BoxSize,BlurSTD,ArrowSize,scale,dt,'Rotation' );
        
     save(ResultsName,'X','Y','Vx','Vy','Om','OmMov','mov')
-    movie2avi(mov,TrackedMovie,'compression','none');
-    movie2avi(OmMov,TrackedMovieOM,'compression','none');
+    Videooutput=VideoWriter(TrackedMovie,'unCompressed AVI');
+    Videooutput.FrameRate=5;
+    open(Videooutput);
+    writeVideo(Videooutput,mov);
+    close(Videooutput);
+    VideooutputOM=VideoWriter(TrackedMovieOM,'unCompressed AVI');
+    VideooutputOM.FrameRate=5;
+    open(VideooutputOM);
+    writeVideo(VideooutputOM,OmMov);
+    close(VideooutputOM);
+    %movie2avi(mov,TrackedMovie,'compression','none');
+    %movie2avi(OmMov,TrackedMovieOM,'compression','none');
     
     elseif strcmp(varargin{1},'React')  == true
     
     [ X,Y,Vx,Vy,mov,Gamma ] = OpticalFlow( MovName,BinaryMask,BoxSize,BlurSTD,ArrowSize,scale,dt,'React' );
    
     save(ResultsName,'X','Y','Vx','Vy','Gamma','mov');
-    movie2avi(mov,TrackedMovie,'compression','none','fps',5);
+    Videooutput=VideoWriter(TrackedMovie,'unCompressed AVI');
+    Videooutput.FrameRate=5;
+    open(Videooutput);
+    writeVideo(Videooutput,mov);
+    close(Videooutput);
+    %movie2avi(mov,TrackedMovie,'compression','none','fps',5);
     
     else
     
