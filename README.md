@@ -30,3 +30,5 @@ After getting several movies of monolayer movement, use this series of program t
  > _Ellipse.m_ Drawing a ellipse to the plot.
  
  > _MSD.m_ Calculated the mean square displacement (need poisition data of the cells)
+
+ > _GeneratePositionInfo.m_ Generate PositionInfo.mat
