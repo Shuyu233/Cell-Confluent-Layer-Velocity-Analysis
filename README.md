@@ -23,6 +23,8 @@ After getting several movies of monolayer movement, use this series of program t
  
  > _PlotCorrelationCurve.m_ Plot the Correlation Function using data got from the _CorrelationNew.m_
  
+ > _CorrelationST.m_ Calculate the 2D correlation function(time & spatial)
+ 
 - Other files
  
  > _FoldedProgram0215_filter.m_ A program to run the programs simutanously.
@@ -32,3 +34,6 @@ After getting several movies of monolayer movement, use this series of program t
  > _MSD.m_ Calculated the mean square displacement (need poisition data of the cells)
 
  > _GeneratePositionInfo.m_ Generate PositionInfo.mat
+
+ > _Generate2DPositionInfo.m_ Generate PositionInfo2D.mat
+ 
