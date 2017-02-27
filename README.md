@@ -17,6 +17,8 @@ After getting several movies of monolayer movement, use this series of program t
  
  > _PositionInfo.mat_ Contains mapping info of data and distance(Map) and the distance of every point(R_Set)
  
+ > _PositionInfo2D.mat_ Contains mapping info of data and distance/time(Map) and the poisiton/time information of every point(Xr,Xt)
+ 
  > _SubOdd.m_ A function to eliminate the velocity points caused by pollutions out of the monolayer
  
  > _StatisticalAnaysis.m_ Calculate the velocity distributiion of the monolayer
