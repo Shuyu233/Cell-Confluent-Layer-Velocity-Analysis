@@ -1,5 +1,5 @@
 [N_2,tmp]=size(X);
-Nc=sqrt(N_2)
+Nc=sqrt(N_2);
 R_all=zeros(Nc^2*(Nc^2-1)/2,1);
 Count=0;
 for i=1:(Nc^2-1)
@@ -18,3 +18,4 @@ while Count<Nc^2*(Nc^2-1)/2
     Count=Count+Np;
     Map=[Map;{p}];
 end
+save('PositionInfo.mat','Map','R_set');
